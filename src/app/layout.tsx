@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+
+const notosans = Noto_Sans({ 
+  subsets: ["latin"],
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,12 +17,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${notosans.className} bg-emerald-50/[75%]`}>
+        <div
+          className="dark:bg-[#6ee7b7]/50 absolute top-[-6rem] -z-10 h-[20rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem]"
+        > </div>
+        
+          <Header />
+          {children}
+          <Footer />
+        
+      </body>
     </html>
   );
 }
