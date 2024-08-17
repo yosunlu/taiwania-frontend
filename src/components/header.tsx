@@ -28,7 +28,7 @@ export default function Header() {
     const activePathname =  usePathname();
     return (
         <header className="flex items-center justify-between  h-14 px-3 sm:px-9">
-            <Link href="/">Taiwania</Link>
+            <Link href="/" className="text-emerald-500 font-semibold">Taiwania</Link>
             
             <nav className="h-full">
                 <ul className="flex gap-x-6 h-full text-sm">
@@ -43,7 +43,7 @@ export default function Header() {
                         >
                             <Link href={route.path}>{route.name}</Link>
                             {
-                                activePathname === route.path && (<motion.div layoutId="header-active-link" className="bg-emerald-500 h-1 w-full absolute bottom-0"></motion.div>)
+                                activePathname === route.path && (<motion.div layoutId="header-active-link" className="bg-emerald-500 h-1 w-full absolute bottom-1"></motion.div>)
                             }
                             
                         </li>

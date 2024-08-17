@@ -3,6 +3,7 @@ import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Container from "@/components/container";
 
 
 const notosans = Noto_Sans({ 
@@ -26,10 +27,11 @@ export default function RootLayout({
         <div
           className="dark:bg-[#6ee7b7]/50 absolute top-[-6rem] -z-10 h-[20rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem]"
         > </div>
-        
-          <Header />
-          {children}
-          <Footer />
+        <Container>
+            <Header />
+            {children}
+            <Footer />
+        </Container>
         
       </body>
     </html>
