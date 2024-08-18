@@ -1,5 +1,6 @@
 import SectionDevider from "@/components/section-devider";
 import HomeTitle from "@/components/home-title";
+import List from "@/components/list";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       
       <HomeTitle/>
       <SectionDevider/>
+      <List/>
       
       
     </main>
