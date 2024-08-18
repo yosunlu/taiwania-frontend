@@ -28,7 +28,7 @@ const routes = [
 export default function Header() {
     const activePathname =  usePathname();
     return (
-        <header className="flex items-center justify-between  h-14 px-3 sm:px-9">
+        <header className="flex items-center justify-between h-14 px-3 sm:px-9">
             <Link href="/" className="flex text-black/50 items-center">
                 <Image alt="Taiwan is a country" src="/logo.png" width={0} height={0} className="mr-1.5"  style={{ height: "18px", width: "auto" }}/>
                 Taiwania
