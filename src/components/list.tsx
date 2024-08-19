@@ -32,7 +32,8 @@ export default function List() {
   }, []);
 
   return (
-    <table>
+    <div className="sm:px-9">
+      <table >
       <thead>
         <tr>
           <th>Phrase</th>
@@ -54,5 +55,7 @@ export default function List() {
         ))}
       </tbody>
     </table>
-  )
+
+    </div>
+      )
 }
