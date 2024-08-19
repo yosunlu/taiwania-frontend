@@ -40,7 +40,7 @@ export default function List() {
               <th className="text-left ">Pronounciation</th>
               <th className="text-left w-1/2">Definition</th>
               <th className="text-left w-1/7 px-3">Tags</th>
-              <th className="text-left">Audio</th>
+              <th className="text-center">Audio</th>
             </tr>
           </thead>
           <tbody>
@@ -50,7 +50,7 @@ export default function List() {
                 <td className="py-2">{phrase.pronounciation}</td>
                 <td className="py-2">{phrase.definition}</td>
                 <td className="py-2 px-3">{phrase.tags}</td>
-                <td className="py-2 px-3">
+                <td className="py-2 px-3 text-left">
                   {phrase.audioURL ? (
                     <a href={phrase.audioURL} target="_blank" rel="noopener noreferrer">
                       Listen
