@@ -32,30 +32,37 @@ export default function List() {
   }, []);
 
   return (
-    <div className="sm:px-9">
-      <table >
-      <thead>
-        <tr>
-          <th>Phrase</th>
-          <th>Pronounciation</th>
-          <th>Definition</th>
-          <th>Tags</th>
-          <th>Audio</th>
-        </tr>
-      </thead>
-      <tbody>
-        {phrases.map((phrase) => (
-          <tr key={phrase.id}>
-            <td>{phrase.phrase}</td>
-            <td>{phrase.pronounciation}</td>
-            <td>{phrase.definition}</td>
-            <td>{phrase.tags}</td>
-            <td>{phrase.audioURL}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-
-    </div>
-      )
+      <div className="text-black/50 text-sm sm:px-9">
+        <table className="w-full border-collapse">
+          <thead className="font-thin text-emerald-800  border-b">
+            <tr>
+              <th className="text-left w-1/7">Phrase</th>
+              <th className="text-left ">Pronounciation</th>
+              <th className="text-left w-1/2">Definition</th>
+              <th className="text-left w-1/7 px-3">Tags</th>
+              <th className="text-left">Audio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {phrases.map((phrase) => (
+              <tr key={phrase.id} className="border-b">
+                <td className="py-2">{phrase.phrase}</td>
+                <td className="py-2">{phrase.pronounciation}</td>
+                <td className="py-2">{phrase.definition}</td>
+                <td className="py-2 px-3">{phrase.tags}</td>
+                <td className="py-2 px-3">
+                  {phrase.audioURL ? (
+                    <a href={phrase.audioURL} target="_blank" rel="noopener noreferrer">
+                      Listen
+                    </a>
+                  ) : (
+                    ""
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
 }
