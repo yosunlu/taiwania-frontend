@@ -32,9 +32,10 @@ export default function List() {
   }, []);
 
   return (
-      <div className="text-black/50 text-sm sm:px-9">
-        <table className="w-full border-collapse">
-          <thead className="font-thin text-emerald-800  border-b">
+      <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
+        <p className="h-10 text-base">Learn Taiwanese to speak like a local! Taiwania was built by Yushan to teach himself Taiwanese.</p>
+        <table className="w-full border-collapse mt-5">
+          <thead className="font-extrabold text-emerald-800  border-b">
             <tr>
               <th className="text-left w-1/7">Phrase</th>
               <th className="text-left ">Pronounciation</th>
