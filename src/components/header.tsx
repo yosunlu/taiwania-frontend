@@ -3,6 +3,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 
 const routes = [
@@ -27,8 +28,11 @@ const routes = [
 export default function Header() {
     const activePathname =  usePathname();
     return (
-        <header className="flex items-center justify-between  h-14 px-3 sm:px-9">
-            <Link href="/" className="text-emerald-500 font-semibold">Taiwania</Link>
+        <header className="flex items-center justify-between h-14 px-3 sm:px-9 w-full">
+            <Link href="/" className="flex text-black/50 items-center">
+                <Image alt="Taiwan is a country" src="/logo.png" width={0} height={0} className="mr-1.5"  style={{ height: "18px", width: "auto" }}/>
+                Taiwania
+            </Link>
             
             <nav className="h-full">
                 <ul className="flex gap-x-6 h-full text-sm">
