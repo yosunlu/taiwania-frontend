@@ -23,7 +23,7 @@ export default function List() {
   // .catch(error => console.error('Error fetching data:', error));
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api')
+    axios.get('http://54.164.85.253:4000/api')
       .then(response => {
         console.log(response.data);
         setWords(response.data.phrases);
