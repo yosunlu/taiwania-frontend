@@ -30,14 +30,14 @@ export default function List() {
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
-
+ 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
         <p className="h-10 text-base">Learn Taiwanese to speak like a local! Taiwania was built by Yushan to teach himself Taiwanese.</p>
         <table className="w-full border-collapse mt-5">
           <thead className="font-extrabold text-emerald-800  border-b">
             <tr>
-              <th className="text-left w-1/7">Phrase</th>
+              
               <th className="text-left ">Pronounciation</th>
               <th className="text-left w-1/2">Definition</th>
               <th className="text-left w-1/7 px-3">Tags</th>
