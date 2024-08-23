@@ -15,26 +15,25 @@ interface Word {
     phrases: Word[];
   }
   
-export const getRows = async (page = 1): Promise<FetchDataResponse> => {
+  export const getRows = async (page = 1): Promise<FetchDataResponse> => {
     const apiURL: string = process.env.NEXT_PUBLIC_API_URL_LOCAL as string;
 
-    let totalCount = 0;
-    let phrases: Word[] = [];
-
     try {
-        const response = await axios.get(apiURL);
-        ({ totalCount, phrases } = response.data); // Destructure and assign
+        const response = await fetch(apiURL);
+
+        if (!response.ok) {
+            // Handle HTTP errors
+            console.error('Error fetching data:', response.statusText);
+            return { totalCount: 0, phrases: [] };
+        }
+
+        const data = await response.json();
+        const { totalCount, phrases } = data;
+
+        return { totalCount, phrases };
+
     } catch (error) {
         console.error('Error fetching data:', error);
-        // Return an object with default values in case of error
-        return {
-        totalCount: 0,
-        phrases: []
-        };
+        return { totalCount: 0, phrases: [] };
     }
-
-    return {
-        totalCount,
-        phrases
-    };
 };
