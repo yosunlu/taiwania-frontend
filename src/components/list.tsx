@@ -1,8 +1,3 @@
-// "use client"
-
-import axios from "axios";
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { getRows } from "@/lib/server_utils";
 import PaginationControls from "./pagination-controls";
 
@@ -21,27 +16,11 @@ type ListProps = {
 }
 
 export default async function List({page} : ListProps) {
-  // const [phrases, setWords] = useState<Word[]>([]);
-  // const apiURL: string = process.env.NEXT_PUBLIC_API_URL as string;
   
-  // const previousPath = page > 1 ? `/events/${city}?page=${page - 1}` : ""
-  // const nextPath = totalCount > 6 * page ?  `/events/${city}?page=${page + 1}` : ""
-
-  // console.log(apiURL);
-
-  // useEffect(() => {
-  //   // const apiURL: string = process.env.NEXT_PUBLIC as string;
-  //   // console.log(apiURL);
-  //   axios.get(apiURL)
-  //     .then(response => {
-  //       console.log(response.data);
-  //       setWords(response.data.phrases);
-  //     })
-  //     .catch(error => console.error('Error fetching data:', error));
-  // }, []);
-  const {totalCount, phrases} = await getRows(page = 1);
-  const previousPath = page > 1 ? `/?page=${page - 1}` : ""
-  const nextPath = totalCount > 5 * page ?  `/?page=${page + 1}` : ""
+  const curPage = page || 1;
+  const {totalCount, phrases} = await getRows(curPage);
+  const previousPath = curPage > 1 ? `/?page=${curPage - 1}` : ""
+  const nextPath = totalCount > 6 * curPage ?  `/?page=${curPage + 1}` : ""
 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
@@ -76,7 +55,7 @@ export default async function List({page} : ListProps) {
             ))}
           </tbody>
         </table>
-        {/* <PaginationControls previousPath={"/"} nextPath={"/about"}/> */}
+        <PaginationControls previousPath={previousPath} nextPath={nextPath}/>
       </div>
     )
 }

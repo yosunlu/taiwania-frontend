@@ -1,6 +1,4 @@
 import "server-only";
-import axios from "axios";
-
 interface Word {
     id: number;
     phrase: string;
@@ -15,14 +13,14 @@ interface Word {
     phrases: Word[];
   }
   
-  export const getRows = async (page = 1): Promise<FetchDataResponse> => {
+  export const getRows = async (page : Number): Promise<FetchDataResponse> => {
     const apiURL: string = process.env.NEXT_PUBLIC_API_URL_LOCAL as string;
 
     try {
-        const response = await fetch(apiURL);
+        const response = await fetch(apiURL + `/${page}`);
 
         if (!response.ok) {
-            // Handle HTTP errors
+            
             console.error('Error fetching data:', response.statusText);
             return { totalCount: 0, phrases: [] };
         }
