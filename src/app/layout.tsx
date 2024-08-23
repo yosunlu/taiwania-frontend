@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Noto_Sans } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Container from "@/components/container";
 
 
-const notosans = Noto_Sans({ 
+const notosans = Lato({ 
   subsets: ["latin"],
   weight: ['400', '700'],
 });

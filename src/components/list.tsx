@@ -1,7 +1,10 @@
-"use client"
+// "use client"
 
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { getRows } from "@/lib/server_utils";
+import PaginationControls from "./pagination-controls";
 
 
 interface Word {
@@ -13,35 +16,44 @@ interface Word {
   audioURL: string
 }
 
-export default function List() {
-  const [phrases, setWords] = useState<Word[]>([]);
-  // axios.get('http://localhost:4000/api')
-  // .then(response => {
-  //   console.log(response.data)
-  //   setWords(response.data.phrases)
-  // })
-  // .catch(error => console.error('Error fetching data:', error));
+type ListProps = {
+  page?: number
+}
 
-  useEffect(() => {
-    axios.get('http://54.164.85.253:4000/api')
-      .then(response => {
-        console.log(response.data);
-        setWords(response.data.phrases);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+export default async function List({page} : ListProps) {
+  // const [phrases, setWords] = useState<Word[]>([]);
+  // const apiURL: string = process.env.NEXT_PUBLIC_API_URL as string;
+  
+  // const previousPath = page > 1 ? `/events/${city}?page=${page - 1}` : ""
+  // const nextPath = totalCount > 6 * page ?  `/events/${city}?page=${page + 1}` : ""
+
+  // console.log(apiURL);
+
+  // useEffect(() => {
+  //   // const apiURL: string = process.env.NEXT_PUBLIC as string;
+  //   // console.log(apiURL);
+  //   axios.get(apiURL)
+  //     .then(response => {
+  //       console.log(response.data);
+  //       setWords(response.data.phrases);
+  //     })
+  //     .catch(error => console.error('Error fetching data:', error));
+  // }, []);
+  const {totalCount, phrases} = await getRows(page = 1);
+  const previousPath = page > 1 ? `/?page=${page - 1}` : ""
+  const nextPath = totalCount > 5 * page ?  `/?page=${page + 1}` : ""
 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
         <p className="h-10 text-base">Learn Taiwanese to speak like a local! Taiwania was built by Yushan to teach himself Taiwanese.</p>
         <table className="w-full border-collapse mt-5">
-          <thead className="font-extrabold text-emerald-800  border-b">
+          <thead className="text-emerald-800  border-b">
             <tr>
-              <th className="text-left w-1/7">Phrase</th>
-              <th className="text-left ">Pronounciation</th>
-              <th className="text-left w-1/2">Definition</th>
-              <th className="text-left w-1/7 px-3">Tags</th>
-              <th className="text-center">Audio</th>
+              <th className="text-left w-1/7 font-weight-450">Phrase</th>
+              <th className="text-left font-weight-450">Pronounciation</th>
+              <th className="text-left w-1/2 font-weight-450">Definition</th>
+              <th className="text-left w-1/7 px-3 font-weight-450">Tags</th>
+              <th className="text-center font-weight-450">Audio</th>
             </tr>
           </thead>
           <tbody>
@@ -64,6 +76,7 @@ export default function List() {
             ))}
           </tbody>
         </table>
+        {/* <PaginationControls previousPath={"/"} nextPath={"/about"}/> */}
       </div>
     )
 }
