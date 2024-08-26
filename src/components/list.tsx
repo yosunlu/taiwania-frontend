@@ -20,7 +20,7 @@ export default async function List({page} : ListProps) {
   const curPage = page || 1;
   const {totalCount, phrases} = await getRows(curPage);
   const previousPath = curPage > 1 ? `/?page=${curPage - 1}` : ""
-  const nextPath = totalCount > 6 * curPage ?  `/?page=${curPage + 1}` : ""
+  const nextPath = totalCount > 10 * curPage ?  `/?page=${curPage + 1}` : ""
 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
