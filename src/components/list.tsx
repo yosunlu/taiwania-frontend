@@ -6,6 +6,7 @@ interface Word {
   id: number;
   phrase: string;
   pronounciation: string;
+  mandarin: string;
   definition: string;
   tags: string;
   audioURL: string
@@ -13,14 +14,28 @@ interface Word {
 
 type ListProps = {
   page?: number
+  tag?: string
 }
 
-export default async function List({page} : ListProps) {
+export default async function List({page, tag} : ListProps) {
   
   const curPage = page || 1;
-  const {totalCount, phrases} = await getRows(curPage);
-  const previousPath = curPage > 1 ? `/?page=${curPage - 1}` : ""
-  const nextPath = totalCount > 10 * curPage ?  `/?page=${curPage + 1}` : ""
+  let phrases = [];
+  let previousPath = "";
+  let nextPath = "";
+
+  if (tag) {
+    
+    const { totalCount, phrases: fetchedPhrases } = await getRows(curPage, tag);
+    phrases = fetchedPhrases;
+    previousPath = curPage > 1 ? `/?tag=${tag}&page=${curPage - 1}` : "";
+    nextPath = totalCount > 10 * curPage ? `/?tag=${tag}&page=${curPage + 1}` : "";
+  } else {
+    const { totalCount, phrases: fetchedPhrases } = await getRows(curPage, "");
+    phrases = fetchedPhrases;
+    previousPath = curPage > 1 ? `/?page=${curPage - 1}` : "";
+    nextPath = totalCount > 10 * curPage ? `/?page=${curPage + 1}` : "";
+  }
 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
@@ -39,7 +54,7 @@ export default async function List({page} : ListProps) {
           </thead>
           <tbody>
             {phrases.map((phrase) => (
-              <tr key={phrase.id} className="border-b">
+              <tr key={phrase.id} className="border-b hover:text-emerald-900 transition">
                 <td className="py-2 pr-5 max-w-[100px] align-baseline">{phrase.phrase}</td>
                 <td className="py-2 pr-5 max-w-[120px] align-baseline">{phrase.pronounciation}</td>
                 <td className="py-2 pr-5 max-w-[160px] align-baseline">{phrase.mandarin}</td>
@@ -52,7 +67,7 @@ export default async function List({page} : ListProps) {
                       </span>
                     ))}
                 </td>
-                <td className="py-2">
+                <td className="py-2 align-baseline">
                   {phrase.audioURL ? (
                     <a href={phrase.audioURL} target="_blank" rel="noopener noreferrer">
                       Listen

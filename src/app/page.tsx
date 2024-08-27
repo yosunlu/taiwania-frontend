@@ -9,14 +9,17 @@ export default function Home({
   
 }) {
   const page = Number(searchParams['page'] ?? '1');
-  // const per_page = searchParams['per_page'] ?? '5'
+  let tag = String(searchParams['tag'] ?? '');
+  if(tag){
+    tag = tag.split('/')[0];
+  }
   
   return (
     <main className='flex flex-col mt-2 items-center'>
       
       <HomeTitle/>
       <SectionDevider/>
-      <List page={page}/>
+      <List page={page} tag={tag}/>
       
     </main>
   );
