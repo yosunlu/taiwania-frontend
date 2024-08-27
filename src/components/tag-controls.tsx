@@ -1,16 +1,18 @@
 'use client'
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {ArrowLeftIcon, ArrowRightIcon} from "@radix-ui/react-icons"
 
-type PaginationControlProps = {
-    previousPath: string,
-    nextPath: string
+
+type TagProps = {
+    tag: string,
 }
 const btnStyles = `
-  flex items-center gap-x-2 px-5 py-2 
-  rounded-md
-  border
+ flex
+ flex-col
+ item-center 
+ bg-[#6ee7b7]/50
+  h-[1rem] 
+  w-[5rem]
+  rounded-full
   hover:bg-emerald-200 
   hover:text-black
   hover:shadow-lg 
@@ -19,29 +21,14 @@ const btnStyles = `
   ease-in-out
 `;
 
-export default function TagControls({previousPath, nextPath}: PaginationControlProps) {
+export default function TagControls({tag}: TagProps) {
     const router = useRouter()
-  return <section className="flex justify-between w-full">
-    {
-        previousPath ? (
-            <button 
+  return <button 
                className={btnStyles}
-               onClick={()=> router.push(previousPath)}>
-            <ArrowLeftIcon/>
-            Previous
+               onClick={()=> router.push(`?tag=${tag}/?page=1`)}>
+            {tag}
         </button>
-        ) : <div/>
-    }
-
-    {
-        nextPath && (
-            <button 
-                className={btnStyles}
-                onClick={()=> router.push(nextPath)}>
-            Next
-            <ArrowRightIcon/>
-        </button>
-        )
-    }
-  </section>
 }
+
+//    bg-[#6ee7b7]/50 absolute top-[-6rem] left-1/2 transform -translate-x-1/2 
+//           -z-10 h-[20rem] w-[31.25rem] rounded-full blur-[5rem] sm:w-[68.75rem]"

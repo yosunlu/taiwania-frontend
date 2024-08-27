@@ -1,16 +1,7 @@
 import { getRows } from "@/lib/server_utils";
 import PaginationControls from "./pagination-controls";
+import TagControls from "./tag-controls";
 
-
-interface Word {
-  id: number;
-  phrase: string;
-  pronounciation: string;
-  mandarin: string;
-  definition: string;
-  tags: string;
-  audioURL: string
-}
 
 type ListProps = {
   page?: number
@@ -24,23 +15,16 @@ export default async function List({page, tag} : ListProps) {
   let previousPath = "";
   let nextPath = "";
 
-  if (tag) {
-    
-    const { totalCount, phrases: fetchedPhrases } = await getRows(curPage, tag);
-    phrases = fetchedPhrases;
-    previousPath = curPage > 1 ? `/?tag=${tag}&page=${curPage - 1}` : "";
-    nextPath = totalCount > 10 * curPage ? `/?tag=${tag}&page=${curPage + 1}` : "";
-  } else {
-    const { totalCount, phrases: fetchedPhrases } = await getRows(curPage, "");
-    phrases = fetchedPhrases;
-    previousPath = curPage > 1 ? `/?page=${curPage - 1}` : "";
-    nextPath = totalCount > 10 * curPage ? `/?page=${curPage + 1}` : "";
-  }
+  const { totalCount, phrases: fetchedPhrases } = await getRows(curPage, tag || "");
+  phrases = fetchedPhrases;
+  
+  previousPath = curPage > 1 ? `/?page=${curPage - 1}` + (tag ? `&tag=${tag}` : "") : "";
+  nextPath = totalCount > 10 * curPage ? `/?page=${curPage + 1}` + (tag ? `&tag=${tag}` : "") : "";
 
   return (
       <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
         <p className="h-10 text-base">Learn Taiwanese to speak like a local! Taiwania was built by Yushan to teach himself Taiwanese.</p>
-        <table className="w-full border-collapse mt-5">
+        <table className="w-full border-collapse mt-5 min-w-full">
           <thead className="text-emerald-800  border-b">
             <tr>
               <th className="text-left w-1/7 font-weight-450">Phrase</th>
@@ -62,8 +46,8 @@ export default async function List({page, tag} : ListProps) {
                 <td className="py-2 pr-5 align-baseline">{phrase.usage}</td>
                 <td className="py-2 pr-5 flex flex-col align-baseline">
                     {phrase.tags.map((tag, index) => (
-                      <span key={index} className="mr-2">
-                        {tag}
+                      <span key={index} className="mr-2 py-0.5">
+                        <TagControls tag={tag}/>
                       </span>
                     ))}
                 </td>
