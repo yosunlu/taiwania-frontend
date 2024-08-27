@@ -1,13 +1,16 @@
 import "server-only";
-import axios from 'axios';
+
 interface Word {
-    id: number;
-    phrase: string;
-    pronounciation: string;
-    definition: string;
-    tags: string;
-    audioURL: string
-  }
+  id: number;
+  phrase: string;
+  pronounciation: string;
+  mandarin: string;
+  definition: string;
+  usage: string;
+  tags: string[]; 
+  audioURL: string;
+}
+
   
   interface FetchDataResponse {
     totalCount: number;

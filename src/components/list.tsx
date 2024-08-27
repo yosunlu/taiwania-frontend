@@ -30,19 +30,29 @@ export default async function List({page} : ListProps) {
             <tr>
               <th className="text-left w-1/7 font-weight-450">Phrase</th>
               <th className="text-left font-weight-450">Pronounciation</th>
-              <th className="text-left w-1/2 font-weight-450">Definition</th>
-              <th className="text-left w-1/7 px-3 font-weight-450">Tags</th>
-              <th className="text-center font-weight-450">Audio</th>
+              <th className="text-left font-weight-450">Mandarin</th>
+              <th className="text-left w-1/3 font-weight-450">Definition</th>
+              <th className="text-left font-weight-450">Usage</th>
+              <th className="text-left font-weight-450">Tags</th>
+              <th className="text-left font-weight-450">Audio</th>
             </tr>
           </thead>
           <tbody>
             {phrases.map((phrase) => (
               <tr key={phrase.id} className="border-b">
-                <td className="py-2">{phrase.phrase}</td>
-                <td className="py-2">{phrase.pronounciation}</td>
-                <td className="py-2">{phrase.definition}</td>
-                <td className="py-2 px-3">{phrase.tags}</td>
-                <td className="py-2 px-3 text-left">
+                <td className="py-2 pr-5 max-w-[100px] align-baseline">{phrase.phrase}</td>
+                <td className="py-2 pr-5 max-w-[120px] align-baseline">{phrase.pronounciation}</td>
+                <td className="py-2 pr-5 max-w-[160px] align-baseline">{phrase.mandarin}</td>
+                <td className="py-2 pr-5 align-baseline">{phrase.definition}</td>
+                <td className="py-2 pr-5 align-baseline">{phrase.usage}</td>
+                <td className="py-2 pr-5 flex flex-col align-baseline">
+                    {phrase.tags.map((tag, index) => (
+                      <span key={index} className="mr-2">
+                        {tag}
+                      </span>
+                    ))}
+                </td>
+                <td className="py-2">
                   {phrase.audioURL ? (
                     <a href={phrase.audioURL} target="_blank" rel="noopener noreferrer">
                       Listen
