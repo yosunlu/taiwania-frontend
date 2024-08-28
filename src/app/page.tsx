@@ -1,6 +1,8 @@
 import SectionDevider from "@/components/section-devider";
 import HomeTitle from "@/components/home-title";
 import List from "@/components/list";
+import Introduction from "@/components/introduction";
+import Filter from "@/components/filter";
 
 export default function Home({
   searchParams
@@ -19,6 +21,8 @@ export default function Home({
       
       <HomeTitle/>
       <SectionDevider/>
+      <Introduction/>
+      <Filter/>
       <List page={page} tag={tag}/>
       
     </main>

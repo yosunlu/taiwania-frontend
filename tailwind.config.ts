@@ -15,7 +15,7 @@ const config: Config = {
       },
       fontFamily:{
         DM: ["'Playfair Display'"]
-      }
+      },
 
     },
   },

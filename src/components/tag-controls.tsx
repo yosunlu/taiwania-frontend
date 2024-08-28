@@ -1,34 +1,33 @@
 'use client'
 import { useRouter } from "next/navigation";
+import tagColors from '../lib/tag_colors';
 
 
 type TagProps = {
     tag: string,
+    displayName: string,
 }
 const btnStyles = `
- flex
- flex-col
- item-center 
- bg-[#6ee7b7]/50
-  h-[1rem] 
-  w-[5rem]
-  rounded-full
-  hover:bg-emerald-200 
-  hover:text-black
-  hover:shadow-lg 
-  transition 
-  duration-200 
-  ease-in-out
+    flex
+    justify-center
+    items-center 
+    hover:text-black
+    hover:shadow
+    font-DM
+    text-[11px]
+    border
+    px-1 
+    py-0.3
+    rounded
+    transition-none
 `;
 
-export default function TagControls({tag}: TagProps) {
+export default function TagControls({tag, displayName}: TagProps) {
     const router = useRouter()
+    const tagColor = tagColors[tag] || 'bg-emerald-200';
   return <button 
-               className={btnStyles}
+               className={`${tagColor} ${btnStyles} `}
                onClick={()=> router.push(`?tag=${tag}/?page=1`)}>
-            {tag}
+            {displayName}
         </button>
 }
-
-//    bg-[#6ee7b7]/50 absolute top-[-6rem] left-1/2 transform -translate-x-1/2 
-//           -z-10 h-[20rem] w-[31.25rem] rounded-full blur-[5rem] sm:w-[68.75rem]"

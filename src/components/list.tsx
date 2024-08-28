@@ -22,8 +22,7 @@ export default async function List({page, tag} : ListProps) {
   nextPath = totalCount > 10 * curPage ? `/?page=${curPage + 1}` + (tag ? `&tag=${tag}` : "") : "";
 
   return (
-      <div className="text-black/50 text-sm sm:px-9 flex flex-col items-center">
-        <p className="h-10 text-base">Learn Taiwanese to speak like a local! Taiwania was built by Yushan to teach himself Taiwanese.</p>
+      <div className="text-black/50 text-sm sm:px-9 items-center min-w-full">
         <table className="w-full border-collapse mt-5 min-w-full">
           <thead className="text-emerald-800  border-b">
             <tr>
@@ -43,11 +42,13 @@ export default async function List({page, tag} : ListProps) {
                 <td className="py-2 pr-5 max-w-[120px] align-baseline">{phrase.pronounciation}</td>
                 <td className="py-2 pr-5 max-w-[160px] align-baseline">{phrase.mandarin}</td>
                 <td className="py-2 pr-5 align-baseline">{phrase.definition}</td>
-                <td className="py-2 pr-5 align-baseline">{phrase.usage}</td>
-                <td className="py-2 pr-5 flex flex-col align-baseline">
+                <td className="py-2 pr-5 align-baseline">
+                  <TagControls tag={phrase.usage} displayName={phrase.usage}/>
+                </td>
+                <td className="py-1 pr-5 flex flex-col align-baseline">
                     {phrase.tags.map((tag, index) => (
-                      <span key={index} className="mr-2 py-0.5">
-                        <TagControls tag={tag}/>
+                      <span key={index} className="mr-2 py-0.3">
+                        <TagControls tag={tag} displayName={tag}/>
                       </span>
                     ))}
                 </td>

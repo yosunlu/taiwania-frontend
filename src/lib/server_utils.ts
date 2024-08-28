@@ -24,13 +24,13 @@ interface Word {
     try {
         let response;
         if(tag == ""){
-          response = await fetch(`http://localhost:4000/api/${page}`, {
+          response = await fetch(`http://34.207.98.199:4000/api/${page}`, {
             cache: 'no-store'
           })
           
         } else {
           // console.log(tag)
-          response = await fetch(`http://localhost:4000/api/${tag}/${page}`, {
+          response = await fetch(`http://34.207.98.199:4000/api/${tag}/${page}`, {
             cache: 'no-store'
           })
           
