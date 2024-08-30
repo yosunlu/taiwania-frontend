@@ -3,6 +3,7 @@ import HomeTitle from "@/components/home-title";
 import List from "@/components/list";
 import Introduction from "@/components/introduction";
 import Filter from "@/components/filter";
+import SearchForm from "@/components/search-form";
 
 export default function Home({
   searchParams
@@ -10,10 +11,19 @@ export default function Home({
   searchParams: {[key: string]: string | string[] | undefined}
   
 }) {
+
   const page = Number(searchParams['page'] ?? '1');
   let tag = String(searchParams['tag'] ?? '');
+  let keyword = String(searchParams['keyword'] ?? '');
+
   if(tag){
     tag = tag.split('/')[0];
+    console.log(tag)
+  }
+  
+  if(keyword){
+    keyword = keyword.split('/')[0];
+    console.log(keyword)
   }
   
   return (
@@ -22,8 +32,9 @@ export default function Home({
       <HomeTitle/>
       <SectionDevider/>
       <Introduction/>
+      <SearchForm/>
       <Filter/>
-      <List page={page} tag={tag}/>
+      <List page={page} tag={tag} keyword={keyword}/>
       
     </main>
   );

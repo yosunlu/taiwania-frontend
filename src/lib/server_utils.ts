@@ -17,20 +17,28 @@ interface Word {
     phrases: Word[];
   }
   
-  export const getRows = async (page : Number, tag: string): Promise<FetchDataResponse> => {
+  export const getRows = async (page : Number, tag: string, keyword: string): Promise<FetchDataResponse> => {
     const apiURL: string = process.env.NEXT_PUBLIC_API_URL_LOCAL as string;
+    
     
 
     try {
         let response;
-        if(tag == ""){
-          response = await fetch(`http://3.93.35.143:4000/api/${page}`, {
+        
+        if(keyword != ""){
+          response = await fetch(`http://localhost:4000/search/${keyword}/${page}`, {
+            cache: 'no-store'
+          })
+        }
+
+        else if(tag != ""){
+          response = await fetch(`http://localhost:4000/api/${tag}/${page}`, {
             cache: 'no-store'
           })
           
         } else {
           // console.log(tag)
-          response = await fetch(`http://3.93.35.143:4000/api/${tag}/${page}`, {
+          response = await fetch(`http://localhost:4000/api/${page}`, {
             cache: 'no-store'
           })
           
@@ -45,7 +53,7 @@ interface Word {
 
         const data = await response.json();
         const { totalCount, phrases } = data;
-        console.log(data)
+        // console.log(data)
 
         return { totalCount, phrases };
 

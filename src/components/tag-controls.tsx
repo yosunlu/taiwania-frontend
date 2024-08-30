@@ -18,8 +18,10 @@ const btnStyles = `
     border
     px-1 
     py-0.3
+    h-[1.3rem]
     rounded
     transition-none
+    cursor-pointer
 `;
 
 export default function TagControls({tag, displayName}: TagProps) {
