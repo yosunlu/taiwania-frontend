@@ -23,26 +23,26 @@ export default async function List({page, tag} : ListProps) {
 
   return (
       <div className="text-black/50 text-sm sm:px-9 items-center min-w-full">
-        <table className="w-full border-collapse mt-5 min-w-full">
+        <table className="w-full border-collapse mt-5 min-w-full table-fixed">
           <thead className="text-emerald-800  border-b">
             <tr>
-              <th className="text-left w-1/7 font-weight-450">Phrase</th>
-              <th className="text-left font-weight-450">Pronounciation</th>
-              <th className="text-left font-weight-450">Mandarin</th>
-              <th className="text-left w-1/3 font-weight-450">Definition</th>
-              <th className="text-left font-weight-450">Usage</th>
-              <th className="text-left font-weight-450">Tags</th>
+              <th className="w-[9rem] text-left font-weight-450">Phrase</th>
+              <th className="w-[9rem] text-left font-weight-450 pl-2">Pronounciation</th>
+              <th className="w-[9rem] text-left font-weight-450 pl-2">Mandarin</th>
+              <th className="w-[23rem] text-left font-weight-450 pl-2">Definition</th>
+              <th className="w-[7rem] text-left font-weight-450 pl-2">Usage</th>
+              <th className="w-[7rem] text-left font-weight-450 ">Tags</th>
               <th className="text-left font-weight-450">Audio</th>
             </tr>
           </thead>
           <tbody>
             {phrases.map((phrase) => (
               <tr key={phrase.id} className="border-b hover:text-emerald-900 transition">
-                <td className="py-2 pr-5 max-w-[100px] align-baseline">{phrase.phrase}</td>
-                <td className="py-2 pr-5 max-w-[120px] align-baseline">{phrase.pronounciation}</td>
-                <td className="py-2 pr-5 max-w-[160px] align-baseline">{phrase.mandarin}</td>
-                <td className="py-2 pr-5 align-baseline">{phrase.definition}</td>
-                <td className="py-2 pr-5 align-baseline">
+                <td className="align-baseline">{phrase.phrase}</td>
+                <td className="align-baseline pl-2">{phrase.pronounciation}</td>
+                <td className="align-baseline pl-2">{phrase.mandarin}</td>
+                <td className="align-baseline pl-2">{phrase.definition}</td>
+                <td className="align-baseline pl-2">
                   <TagControls tag={phrase.usage} displayName={phrase.usage}/>
                 </td>
                 <td className="py-1 pr-5 flex flex-col align-baseline">
