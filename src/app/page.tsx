@@ -18,12 +18,12 @@ export default function Home({
 
   if(tag){
     tag = tag.split('/')[0];
-    console.log(tag)
+    // console.log(tag)
   }
   
   if(keyword){
     keyword = keyword.split('/')[0];
-    console.log(keyword)
+    // console.log(keyword)
   }
   
   return (
@@ -32,6 +32,7 @@ export default function Home({
       <HomeTitle/>
       <SectionDevider/>
       <Introduction/>
+      <SectionDevider/>
       <SearchForm/>
       <Filter/>
       <List page={page} tag={tag} keyword={keyword}/>

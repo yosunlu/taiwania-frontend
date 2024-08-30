@@ -30,7 +30,7 @@ export default async function List({ page, tag, keyword }: ListProps) {
 
   return (
     <div className="text-black/50 text-sm sm:px-9 items-center min-w-full">
-      <table className="w-full border-collapse mt-5 min-w-full table-fixed">
+      <table className="w-full border-collapse mt-5 min-w-full table-fixed mb-3">
         <thead className="text-emerald-800 border-b">
           <tr>
             <th className="w-[9rem] text-left font-weight-450">Phrase</th>
@@ -52,7 +52,7 @@ export default async function List({ page, tag, keyword }: ListProps) {
           {phrases.map((phrase) => (
             <tr
               key={phrase.id}
-              className="border-b  hover:text-emerald-900 transition"
+              className="border-b  hover:text-emerald-900 hover:bg-emerald-50 transition"
             >
               <td className="align-baseline py-2">{phrase.phrase}</td>
               <td className="align-baseline pl-2 py-2">

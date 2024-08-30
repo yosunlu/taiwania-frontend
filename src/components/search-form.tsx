@@ -13,24 +13,35 @@ export default function SearchForm() {
     if (!searchText) return;
     router.push(`/?keyword=${searchText}/?page=1`);
   };
-
+  console.log(pathname);
   // Reset search text when the pathname changes
   useEffect(() => {
     const keyword = searchParams.get("keyword");
     if (!keyword) {
+      console.log(pathname);
       setSearchText("");
     }
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   return (
-    <form onSubmit={handleSubmit} className="sm:w-[580px] mb-5">
+    <form
+      onSubmit={handleSubmit}
+      className="sm:w-[580px] mb-5 flex items-center justify-center -ml-[2rem] font-DM text-xs"
+    >
       <input
-        className="w-full h-6 rounded-lg bg-white/50 px-3 border focus:ring-emerald-500 transition focus:bg-white/10 text-sm"
+        className="w-[10rem] h-[2rem] rounded-lg bg-white/50 px-3 border focus:border-emerald-700 focus:border-5 
+        transition focus:outline-none focus:ring-0"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Search any keyword"
+        placeholder="keyword"
         spellCheck={false}
       ></input>
+      <button
+        type="submit"
+        className="ml-3 h-[2rem] px-4 rounded-lg bg-emerald-700 text-white transition hover:bg-emerald-800"
+      >
+        Search
+      </button>
     </form>
   );
 }

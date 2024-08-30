@@ -1,5 +1,5 @@
 export default function Suggest() {
   return (
-    <div>Suggest a usage</div>
+    <div className="w-full px-9 text-black/50">Work in progress...</div>
   )
 }

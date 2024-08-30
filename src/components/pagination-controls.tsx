@@ -1,47 +1,35 @@
-'use client'
-import Link from "next/link";
+"use client";
+
 import { useRouter } from "next/navigation";
-import {ArrowLeftIcon, ArrowRightIcon} from "@radix-ui/react-icons"
 
 type PaginationControlProps = {
-    previousPath: string,
-    nextPath: string
-}
+  previousPath: string;
+  nextPath: string;
+};
 const btnStyles = `
-  flex items-center gap-x-2 px-5 py-2 
-  rounded-md
-  border
-  hover:bg-emerald-200 
-  hover:text-black
-  hover:shadow-lg 
-  transition 
-  duration-200 
-  ease-in-out
+  w-[5rem] h-[2rem] px-2 rounded-lg bg-emerald-700 text-white transition hover:bg-emerald-800 font-DM text-xs mb-5
 `;
 
-export default function PaginationControls({previousPath, nextPath}: PaginationControlProps) {
-    const router = useRouter()
-  return <section className="flex justify-between w-full">
-    {
-        previousPath ? (
-            <button 
-               className={btnStyles}
-               onClick={()=> router.push(previousPath)}>
-            <ArrowLeftIcon/>
-            Previous
+export default function PaginationControls({
+  previousPath,
+  nextPath,
+}: PaginationControlProps) {
+  const router = useRouter();
+  return (
+    <section className="flex justify-between w-full">
+      {previousPath ? (
+        <button className={btnStyles} onClick={() => router.push(previousPath)}>
+          Previous
         </button>
-        ) : <div/>
-    }
+      ) : (
+        <div />
+      )}
 
-    {
-        nextPath && (
-            <button 
-                className={btnStyles}
-                onClick={()=> router.push(nextPath)}>
-            Next
-            <ArrowRightIcon/>
+      {nextPath && (
+        <button className={btnStyles} onClick={() => router.push(nextPath)}>
+          Next
         </button>
-        )
-    }
-  </section>
+      )}
+    </section>
+  );
 }
