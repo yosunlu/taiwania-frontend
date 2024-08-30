@@ -29,18 +29,18 @@ export default async function List({ page, tag, keyword }: ListProps) {
       : "";
 
   return (
-    <div className="text-black/50 text-sm sm:px-9 items-center min-w-full">
+    <div className="text-black/50 text-base sm:px-9 items-center min-w-full overflow-x-auto">
       <table className="w-full border-collapse mt-5 min-w-full table-fixed mb-3">
         <thead className="text-emerald-800 border-b">
           <tr>
-            <th className="w-[9rem] text-left font-weight-450">Phrase</th>
+            <th className="w-[9rem] text-left font-weight-450 mx-auto">Phrase</th>
             <th className="w-[9rem] text-left font-weight-450 pl-2">
               Pronounciation
             </th>
-            <th className="w-[9rem] text-left font-weight-450 pl-2">
+            <th className="w-[10rem] text-left font-weight-450 pl-2">
               Mandarin
             </th>
-            <th className="w-[23rem] text-left font-weight-450 pl-2">
+            <th className="w-[29rem] text-left font-weight-450 pl-2">
               Definition
             </th>
             <th className="w-[7rem] text-left font-weight-450 pl-2">Usage</th>

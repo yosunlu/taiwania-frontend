@@ -26,7 +26,7 @@ export default function SearchForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="sm:w-[580px] mb-5 flex items-center justify-center -ml-[2rem] font-DM text-xs"
+      className="sm:w-[580px] mb-5 flex items-center justify-center -ml-[2rem] font-DM text-sm"
     >
       <input
         className="w-[10rem] h-[2rem] rounded-lg bg-white/50 px-3 border focus:border-emerald-700 focus:border-5 

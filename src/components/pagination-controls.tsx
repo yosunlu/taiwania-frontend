@@ -7,7 +7,7 @@ type PaginationControlProps = {
   nextPath: string;
 };
 const btnStyles = `
-  w-[5rem] h-[2rem] px-2 rounded-lg bg-emerald-700 text-white transition hover:bg-emerald-800 font-DM text-xs mb-5
+  w-[5rem] h-[2rem] px-2 rounded-lg bg-emerald-700 text-white transition hover:bg-emerald-800 font-DM text-sm mb-5
 `;
 
 export default function PaginationControls({

@@ -14,7 +14,7 @@ const btnStyles = `
     hover:text-black
     hover:shadow
     font-DM
-    text-[11px]
+    text-sm
     border
     px-1 
     py-0.3

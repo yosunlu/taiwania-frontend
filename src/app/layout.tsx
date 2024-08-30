@@ -5,10 +5,9 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Container from "@/components/container";
 
-
-const notosans = Lato({ 
+const notosans = Lato({
   subsets: ["latin"],
-  weight: ['400', '700'],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,18 +22,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notosans.className} bg-emerald-50/[75%] overflow-y-scroll`}>
+      <body
+        className={`${notosans.className} bg-emerald-50/[75%] overflow-y-scroll`}
+      >
         <div
           className="
           bg-[#6ee7b7]/50 absolute top-[-6rem] left-1/2 transform -translate-x-1/2 
           -z-10 h-[20rem] w-[31.25rem] rounded-full blur-[5rem] sm:w-[68.75rem]"
-        > </div>
+        > 
+          {" "}
+        </div>
+
         <Container>
-            <Header />
-            {children}
-            <Footer />
+          <Header />
+          {children}
+          <Footer />
         </Container>
-        
       </body>
     </html>
   );
