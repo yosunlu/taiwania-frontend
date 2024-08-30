@@ -21,24 +21,24 @@ export const getRows = async (
   tag: string,
   keyword: string
 ): Promise<FetchDataResponse> => {
-  const apiURL: string = process.env.NEXT_PUBLIC_API_URL_LOCAL as string;
+  const apiURL: string = process.env.NEXT_PUBLIC_API_URL as string;
 
   try {
     let response;
 
     if (keyword != "") {
       response = await fetch(
-        `http://localhost:4000/search/${keyword}/${page}`,{
+        `${apiURL}search/${keyword}/${page}`,{
           cache: "no-store",
         }
       );
     } else if (tag != "") {
-      response = await fetch(`http://localhost:4000/api/${tag}/${page}`, {
+      response = await fetch(`${apiURL}api/${tag}/${page}`, {
         cache: "no-store",
       });
     } else {
       // console.log(tag)
-      response = await fetch(`http://localhost:4000/api/${page}`, {
+      response = await fetch(`${apiURL}api/${page}`, {
         cache: "no-store",
       });
     }
