@@ -27,7 +27,7 @@ const routes = [
 export default function Header() {
   const activePathname = usePathname();
   return (
-    <header className="flex items-center justify-between h-14 px-3 sm:px-9 w-full">
+    <header className="flex items-center justify-between h-14 px-3 sm:px-9 w-full sticky top-0 z-50 bg-emerald-200 backdrop-blur-2xl bg-transparent rounded-full">
       
         <Link href="/" className="flex text-black/50 items-center">
           <Image
