@@ -1,6 +1,6 @@
 export default function Introduction() {
   return (
-    <div className="flex flex-col items-center text-center text-base w-[90%] flex-wrap text-black/50 relative z-50">
+    <div className="flex flex-col items-center text-center text-base w-[90%] flex-wrap text-black/50">
       <p className="">
         Taiwania was created by{" "}
         <a className="text-emerald-700 " href="https://yushanlu.com" target="_blank">
