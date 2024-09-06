@@ -28,7 +28,7 @@ export default function RootLayout({
         <div
           className="
           bg-[#6ee7b7]/50 absolute top-[-6rem] left-1/2 transform -translate-x-1/2 
-          -z-10 h-[30rem] w-[31.25rem] rounded-full blur-[5rem] sm:w-[100rem]"
+          -z-10 h-[30rem] w-[70%] rounded-full blur-[5rem] sm:w-[100%]"
         > 
           {" "}
         </div>

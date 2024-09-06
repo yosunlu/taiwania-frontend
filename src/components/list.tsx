@@ -35,9 +35,9 @@ export default async function List({ page, tag, keyword }: ListProps) {
       : "";
 
   return (
-    <div className="text-black/50 text-base px-2 sm:px-9 items-center">
-      <div className="overflow-x-auto">
-        <table className="sm:w-full border-collapse mt-5 mb-3 table-fixed">
+    <div className="text-black/50 text-base px-7 items-center w-[100%]">
+      <div className="overflow-auto ">
+        <table className="w-full border-collapse mt-5 mb-3 table-fixed">
           <thead className="text-emerald-800 border-b">
             <tr>
               <th className="w-[9rem] text-left font-weight-450 mx-auto">
@@ -98,8 +98,8 @@ export default async function List({ page, tag, keyword }: ListProps) {
             ))}
           </tbody>
         </table>
-        <PaginationControls previousPath={previousPath} nextPath={nextPath} />
       </div>
+      <PaginationControls previousPath={previousPath} nextPath={nextPath} />
     </div>
   );
 }
