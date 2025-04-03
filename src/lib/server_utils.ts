@@ -23,6 +23,7 @@ export const getRows = async (
 ): Promise<FetchDataResponse> => {
   const apiURL: string = process.env.NEXT_PUBLIC_API_URL as string;
   // const apiURL: string = "http://52.91.127.164:4000/" // use this to test the frontend locally; the ip address is the public IP from the clster
+  // const apiURL: string = "http://34.201.122.94:4000/" // use this to test the frontend locally; the ip address is the public IP from the clster
   try {
     let response;
 

@@ -9,9 +9,9 @@ type ListProps = {
 };
 
 export default async function List({ page, tag, keyword }: ListProps) {
-  const curPage = page || 1;
+  const curPage = page || 1; // if page is not provided, set it to 1
   let phrases = [];
-  let previousPath = "";
+  let previousPath = ""; 
   let nextPath = "";
 
   const { totalCount, phrases: fetchedPhrases } = await getRows(
